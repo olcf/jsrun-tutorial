@@ -1,0 +1,7 @@
+cpu_index_using: physical
+
+app 0: ./run_a
+app 1: ./run_b
+
+1 : {host: 1; cpu: {0:4}} : app 0
+6 : {host: *; cpu: {4:4},{8:4},{12:4},{88:4},{92:4},{96:4} ; gpu: *} : app 1

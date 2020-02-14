@@ -1,0 +1,6 @@
+
+cpu_index_using: physical
+
+1 : {host: 1; cpu: {0:84};  gpu: {0-2}}
+1 : {host: 1; cpu: {88:84}; gpu: {3-5}}
+~                                       
