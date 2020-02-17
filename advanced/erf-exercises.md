@@ -16,22 +16,22 @@ To run the exercises, you can use:
 * `js_task_info`
 * `hello_jsrun`
 
-> To use `hello_jsrun`:
+To use `hello_jsrun`:
 
-> ```
+```
 $ git clone https://code.ornl.gov/t4p/Hello_jsrun.git
 $ cd Hello_jsrun
 $ module load cuda
 $ make
 ```
 
->Then create your ERFs and use `hello_jsrun` as your executable. 
+Then create your ERFs and use `hello_jsrun` as your executable. 
 
-> NOTE: You will want to pipe the results into `sort` to make the text-based results easier to read:
->
-> ```
-> $ jsrun --erf_input my_erf ./hello_jsrun | sort
-> ```
+ NOTE: You will want to pipe the results into `sort` to make the text-based results easier to read:
+
+ ```
+ $ jsrun --erf_input my_erf ./hello_jsrun | sort
+ ```
 
 
 ## Exercise 1
