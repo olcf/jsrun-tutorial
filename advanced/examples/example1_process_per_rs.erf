@@ -1,0 +1,15 @@
+# -------------------------------------------------------------------
+# This ERF shows an example of using "per process specification"
+#
+# It creates 6 RSs, each with 1 MPI rank that has access
+# to 28 HW threads (i.e., 7 physical cores) and 1 GPU.
+# -------------------------------------------------------------------
+
+cpu_index_using: physical
+
+1 : {host: 1; cpu: {0:28};   gpu: 0}
+1 : {host: 1; cpu: {28:28};  gpu: 1}
+1 : {host: 1; cpu: {56:28};  gpu: 2}
+1 : {host: 1; cpu: {88:28};  gpu: 3}
+1 : {host: 1; cpu: {116:28}; gpu: 4}
+1 : {host: 1; cpu: {144:28}; gpu: 5}
