@@ -10,10 +10,29 @@ where `<PROJID>` will need to be replaced with an OLCF project you are associate
 
 > NOTE: The `-alloc_flags gpumps` flag enables CUDA MPS on the GPUs in your allocation.
 
-To run these exercises, you can use the following tools:
+To run the exercises, you can use:
 
-* job-step-viewer
-* Hello_jsrun
+* `job-step-viewer` (recommended)
+* `js_task_info`
+* `hello_jsrun`
+
+> To use `hello_jsrun`:
+
+> ```
+$ git clone https://code.ornl.gov/t4p/Hello_jsrun.git
+$ cd Hello_jsrun
+$ module load cuda
+$ make
+```
+
+>Then create your ERFs and use `hello_jsrun` as your executable. 
+
+> NOTE: You will want to pipe the results into `sort` to make the text-based results easier to read:
+>
+> ```
+> $ jsrun --erf_input my_erf ./hello_jsrun | sort
+> ```
+
 
 ## Exercise 1
 
@@ -80,20 +99,21 @@ So the results should look like the image below.
 
 ## Exercise 4
 
+> NOTE: `job-step-viewer` does not currenly support MPMD mode so you will need to unload the module for this example (if you were using it).
+
 Using the MPMD code example provided in the examples/ directory, create an MPMD layout that represents a master-worker setup, with the master rank running `run_a` (as a proxy for a task-management code) and all other ranks running `run_b`. 
 
 To do so, use an ERF that defines:
 
-* A resource set on each node with 6 MPI ranks that each have access to 4 HW threads (i.e., 1 physical core). These MPI ranks should all run program `run_b`.
+* 3 total RSs
+	* 1 RS on each node where 6 MPI ranks each have access to 4 HW threads (i.e., 1 physical core) - so 24 HW threads total per RS. These MPI ranks should all run program `run_b`.
 
-* 1 additional resource set on the first node with 1 MPI rank that has access to 4 HW threads (i.e., 1 physical core). This MPI rank should run program `run_a`.
+	* 1 additional RS on the first node where 1 MPI rank has access to 4 HW threads (i.e., 1 physical core). This MPI rank should run program `run_a`.
 
-	* So there should be 2 resource sets on the first node but only 1 on the second node.
-
-The output should look similar to the following:
+So there should be 2 resource sets on the first node but only 1 on the second node. The output should look similar to the following:
 
 ```
-$ jsrun --erf_input example5.erf | sort
+$ jsrun --erf_input exercise4.erf | sort
 MPI rank 00 of 13 on HW Thread 001 of Node h27n01 - (Code a)
 MPI rank 01 of 13 on HW Thread 005 of Node h27n01 - (Code b)
 MPI rank 02 of 13 on HW Thread 009 of Node h27n01 - (Code b)
@@ -108,5 +128,3 @@ MPI rank 10 of 13 on HW Thread 090 of Node h27n02 - (Code b)
 MPI rank 11 of 13 on HW Thread 093 of Node h27n02 - (Code b)
 MPI rank 12 of 13 on HW Thread 097 of Node h27n02 - (Code b)
 ```
-
-> NOTE: `job-step-viewer` does not currenly support MPMD mode.
