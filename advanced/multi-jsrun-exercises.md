@@ -15,12 +15,15 @@ The following batch job will execute three jsruns sequentially.
 #BSUB -W 2:00
 #BSUB -nnodes 2
 #BSUB -P abc007
+#BSUB -J SequentialEx
 
 cd $MEMBERWORK/abc007
 
 jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30"
 jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30"
 jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30"
+
+jslist
 ```
 
 
@@ -35,17 +38,22 @@ This method launches multiple jsruns in a simultaneous manner.  Multiple jsruns 
 The following batch job will execute three jsruns simultaneously: 
 ```
 #!/bin/bash
-#BSUB -W 2:00
-#BSUB -nnodes 2
+#BSUB -W 1:00
+#BSUB -nnodes 6
 #BSUB -P abc007
+#BSUB -J SimultaneousEx
 
 cd $MEMBERWORK/abc007
 
-jsrun -n3 -r3 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
-jsrun -n3 -r3 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
-jsrun -n3 -r3 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
-jsrun -n3 -r3 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
+jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
+jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
+jsrun -n12 -r6 -g1 -a1 -c2 csh -c "js_task_info; sleep 30" &
+
+jslist 
+
 wait
+
+jslist
 ```
 
 >NOTE: When backgrounding tasks, the wait command is needed to prevent the batch script's shell from exiting before all backgrounded tasks complete.
