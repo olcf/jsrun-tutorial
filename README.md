@@ -20,9 +20,6 @@ This repository contains the presentations, examples, and exercises for the [jsr
 [**Tom Papatheodore**](https://www.olcf.ornl.gov/directory/staff-member/tom-papatheodore/) |
 [**Chris Fuson**](https://www.olcf.ornl.gov/directory/staff-member/chris-fuson/)
 
-## Using the Reservation
-
-We have a 36 node reservation on Summit for this event. To submit jobs against these nodes and avoid waiting in the normal `batch` queue, use `bsub -U jsrun`. 
 
 ## Additional Resources
 
