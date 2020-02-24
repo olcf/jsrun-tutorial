@@ -26,8 +26,6 @@ We have a 36 node reservation on Summit for this event. To submit jobs against t
 
 ## Additional Resources
 
-#### [<img src="./images/Slack_RGB.png" width="150" valign="middle" alt="Slack"/> We're on Slack! Join for live support during the event.](https://join.slack.com/t/jsruntutorial/shared_invite/enQtOTI0NDMwNTM4MTYxLTMwOTIxOTg2MTcxNDgwNWM5OTRlMGIxZjE4YTAwMzViMDc3NjQzZGJmZDllODM3OGMzNmRkMWY4YjliMjRlMGE)
-
 #### [<img src="./images/SUMMIT_LOGO_OFFICIAL_2017.png" width="125" valign="middle" alt="Summit"/> &nbsp; Summit System User Guide & Documentation](https://docs.olcf.ornl.gov/systems/summit_user_guide.html)
 
 #### [<img src="./images/ibm-spectrum-lsf.png" width="170" valign="middle" alt="Summit"/>   Spectrum LSF Documentation](https://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_welcome/lsf_welcome.html)
